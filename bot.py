@@ -146,6 +146,11 @@ def index():
 # ===== Обработчики команд =====
 @bot.message_handler(commands=["start"])
 def start(message):
+    # Сначала убираем надоедливое окно эмодзи
+    hide_keyboard = telebot.types.ReplyKeyboardRemove()
+    bot.send_message(message.chat.id, "Загружаем меню...", reply_markup=hide_keyboard)
+    
+    # Потом показываем основное меню (твой код)
     bot.send_message(
         message.chat.id,
         "📚 **База anti-age наработок Эльмиры**\n\nВыберите раздел:",
