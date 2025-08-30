@@ -51,7 +51,7 @@ articles = {
         ("Что с лицом - 2: спасение откуда не ждали", "https://t.me/timeforselfcare/135"),
         ("Что вышло, то вышло - апдейт лица от Энджи", "https://t.me/timeforselfcare/137"),
         ("Методика Пратимы Райчур - всё о красоте кожи изнутри", "https://t.me/timeforselfcare/61"),
-        ("Методика Нигмы Талиб- как еда влияет на кожу", "https://t.me/timeforselfcare/66"),
+        ("Методика Нигма Талиб- как еда влияет на кожу", "https://t.me/timeforselfcare/66"),
         ("Тест на тип кожи по методике Нигмы Талиб", "https://t.me/timeforselfcare/69"),
         ("Коллаген - гид по главному белку молодости. Часть 1.", "https://t.me/timeforselfcare/123"),
         ("Коллаген. Часть 2.Какой бывает и как выбрать", "https://t.me/timeforselfcare/124"),
@@ -65,7 +65,7 @@ articles = {
         ("Как прозреть обратно - что я делаю, чтобы вернуть просевшее зрение", "https://t.me/timeforselfcare/91"),
         ("Как правильно выбрать БАД", "https://t.me/timeforselfcare/142"),
         ("Методика Пратимы Райчур - всё о красоте кожи изнутри", "https://t.me/timeforselfcare/61"),
-        ("Методика Нигмы Талиб- как еда влияет на кожу", "https://t.me/timeforselfcare/66"),
+        ("Методика Нигма Талиб- как еда влияет на кожу", "https://t.me/timeforselfcare/66"),
         ("Тест на тип кожи по методике Нигмы Талиб", "https://t.me/timeforselfcare/69"),
         ("Магний: гид по главному дзен-минералу", "https://t.me/timeforselfcare/65"),
         ("Психобиотики: фабрика радости внутри вас", "https://t.me/timeforselfcare/73"),
@@ -180,8 +180,10 @@ def callback_handler(call):
 
 # ===== Настройка webhook для Railway =====
 bot.remove_webhook()
-RAILWAY_URL = os.environ.get("RAILWAY_URL")  # вставь URL своего проекта в переменные окружения
-bot.set_webhook(url=RAILWAY_URL + API_TOKEN)
+RAILWAY_URL = os.environ.get("RAILWAY_URL", "https://your-app-name.railway.app/")  # БЕЗОПАСНАЯ версия
+if RAILWAY_URL:
+    webhook_url = f"{RAILWAY_URL.rstrip('/')}/{API_TOKEN}"
+    bot.set_webhook(url=webhook_url)
 
 # ===== Запуск Flask =====
 if __name__ == "__main__":
