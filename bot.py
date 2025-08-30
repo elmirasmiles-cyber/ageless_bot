@@ -4,7 +4,7 @@ import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # ===== Токен от BotFather =====
-API_TOKEN = os.environ.get("МОЙ ТОКЕН")
+API_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 bot = telebot.TeleBot(API_TOKEN, parse_mode="HTML")
 
 # ===== ПОЛНЫЙ СПИСОК СТАТЕЙ =====
